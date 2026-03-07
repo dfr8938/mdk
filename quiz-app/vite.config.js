@@ -65,6 +65,9 @@ export default defineConfig({
             }
           }
         ]
+      },
+      devOptions: {
+        enabled: false // Отключает PWA в режиме разработки, чтобы избежать ошибок
       }
     })
   ],
