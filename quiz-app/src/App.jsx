@@ -3,7 +3,6 @@ import { useState, useEffect, useMemo } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight, faArrowUp } from '@fortawesome/free-solid-svg-icons'
-import { useSwipeable } from 'react-swipeable'
 
 const fadeIn = keyframes`
   from {
@@ -432,24 +431,6 @@ const ScrollToTopButton = styled.button`
   }
 `
 
-const GestureHint = styled.div`
-  margin: 2rem auto 1rem;
-  max-width: 600px;
-  text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-  opacity: 0.8;
-  animation: ${fadeIn} 0.5s ease-out;
-  @media (max-width: 768px) {
-    font-size: 0.85rem;
-    margin: 1.5rem auto 0.5rem;
-  }
-  @media (max-width: 576px) {
-    font-size: 0.8rem;
-    margin: 1rem auto 0.5rem;
-  }
-`
-
 const Footer = styled.footer`
   margin-top: auto;
   color: #888;
@@ -513,30 +494,6 @@ function App() {
   const endIndex = startIndex + itemsPerPage
   const currentQuestions = filteredQuestions.slice(startIndex, endIndex)
 
-  // Обработчики жестов (свайпов)
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
-      if (currentPage < totalPages) {
-        handlePageChange(currentPage + 1)
-      }
-    },
-    onSwipedRight: () => {
-      if (currentPage > 1) {
-        handlePageChange(currentPage - 1)
-      }
-    },
-    onSwipedUp: () => {
-      // Прокрутка вверх (на одну страницу)
-      window.scrollBy({ top: -window.innerHeight * 0.8, behavior: 'smooth' })
-    },
-    onSwipedDown: () => {
-      // Прокрутка вниз (на одну страницу)
-      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' })
-    },
-    trackMouse: true, // поддержка мыши для отладки
-    preventScrollOnSwipe: true,
-    delta: 50, // минимальное расстояние свайпа
-  })
 
   if (questions.length === 0) {
     return <Root>Загрузка вопросов...</Root>
@@ -574,7 +531,7 @@ function App() {
   }
 
   return (
-    <Root {...swipeHandlers}>
+    <Root>
       <AppContainer>
         <Header>
           <Title>Тестирование</Title>
@@ -637,9 +594,7 @@ function App() {
               </PageInfo>
             </PaginationContainer>
           )}
-          <GestureHint>
-            💡 Поддержка жестов: свайп влево/вправо для перелистывания страниц, свайп вверх/вниз для прокрутки.
-          </GestureHint>
+          
         </main>
         <Footer>
           <p>Тестирование по дисциплине МДК.03.01 — вопросы и ответы для самопроверки.</p>
