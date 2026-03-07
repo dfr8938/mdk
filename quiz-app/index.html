@@ -3,12 +3,24 @@
   <head>
     <!-- Автор: Denis Frolov <d.fr8938@gmail.com/> -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/medical-icon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>quiz-app</title>
+    <meta name="theme-color" content="#1976d2" />
+    <meta name="description" content="Приложение для самопроверки знаний по дисциплине МДК.03.01" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>Тестирование МДК.03.01</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
   </body>
 </html>

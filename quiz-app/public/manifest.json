@@ -1,0 +1,29 @@
+{
+  "name": "Тестирование МДК.03.01",
+  "short_name": "Тестирование",
+  "description": "Приложение для самопроверки знаний по дисциплине МДК.03.01",
+  "theme_color": "#1976d2",
+  "background_color": "#fefefe",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
