@@ -1,12 +1,42 @@
 /* Автор: Denis Frolov <d.fr8938@gmail.com/> */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* CSS переменные для светлой темы в стиле iOS */
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-primary: #007AFF;
+  --color-primary-hover: #0056CC;
+  --color-button-bg: #f2f2f7;
+  --color-button-border: #c6c6c8;
+  --color-border: #c6c6c8;
+  --color-card-bg: #f2f2f7;
+  --color-card-bg-light: #ffffff;
+  --color-card-bg-hover: #e5e5ea;
+  --color-card-shadow: rgba(0, 0, 0, 0.05);
+  --color-card-shadow-hover: rgba(0, 0, 0, 0.1);
+  --color-primary-shadow: rgba(0, 122, 255, 0.3);
+  --color-search-hover-glow: rgba(0, 0, 0, 0.05);
+  --color-subtitle: #8e8e93;
+  --color-error-bg: #ff3b30;
+  --color-error-text: white;
+  --color-card-number-bg: #d1e8ff;
+  --color-card-number-text: #007AFF;
+  --color-correct-bg: #d4f7d4;
+  --color-correct-border: #34c759;
+  --color-correct-text: #1d7d1d;
+
+  /* Пагинация */
+  --color-pagination-bg: #f2f2f7;
+  --color-pagination-bg-active: #007AFF;
+  --color-pagination-text: #000000;
+  --color-pagination-text-active: #ffffff;
+  --color-pagination-border: #c6c6c8;
+  --color-pagination-hover: #e5e5ea;
+  --color-pagination-hover-active: #0056CC;
+  --color-pagination-disabled: rgba(0, 0, 0, 0.26);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,13 +44,40 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Тёмная тема в стиле iOS */
+body.theme-dark {
+  --color-bg: #000000;
+  --color-text: #ffffff;
+  --color-primary: #0A84FF;
+  --color-primary-hover: #409CFF;
+  --color-button-bg: #1c1c1e;
+  --color-button-border: #38383a;
+  --color-border: #38383a;
+  --color-card-bg: #1c1c1e;
+  --color-card-bg-light: #2c2c2e;
+  --color-card-bg-hover: #3a3a3c;
+  --color-card-shadow: rgba(0, 0, 0, 0.5);
+  --color-card-shadow-hover: rgba(0, 0, 0, 0.7);
+  --color-primary-shadow: rgba(10, 132, 255, 0.4);
+  --color-search-hover-glow: rgba(10, 132, 255, 0.2);
+  --color-subtitle: #8e8e93;
+  --color-error-bg: #ff453a;
+  --color-error-text: white;
+  --color-card-number-bg: #0d47a1;
+  --color-card-number-text: #64d2ff;
+  --color-correct-bg: #1d3a1d;
+  --color-correct-border: #34c759;
+  --color-correct-text: #34c759;
+
+  /* Пагинация для тёмной темы */
+  --color-pagination-bg: #1c1c1e;
+  --color-pagination-bg-active: #0A84FF;
+  --color-pagination-text: #ffffff;
+  --color-pagination-text-active: #000000;
+  --color-pagination-border: #38383a;
+  --color-pagination-hover: #2c2c2e;
+  --color-pagination-hover-active: #409CFF;
+  --color-pagination-disabled: rgba(255, 255, 255, 0.3);
 }
 
 body {
@@ -29,41 +86,95 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a {
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--color-primary-hover);
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border-radius: 10px;
+  border: 1px solid var(--color-button-border);
+  padding: 0.7em 1.4em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-button-bg);
+  color: var(--color-text);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s,
+    border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: var(--color-card-bg-hover);
+  border-color: var(--color-primary);
+}
+button:active {
+  transform: scale(0.98);
+  background-color: var(--color-card-bg-hover);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Дополнительные глобальные стили */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+}
+
+input,
+textarea {
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+/* Ripple эффект для кнопок */
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+
+.ripple:active:after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
 }

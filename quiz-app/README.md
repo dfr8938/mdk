@@ -1,18 +1,91 @@
-# React + Vite
+# Тестирование МДК.03.01
 
-Автор: Denis Frolov <d.fr8938@gmail.com/>
+React-приложение для подготовки к экзамену по МДК.03.01 (медицинская тематика). Включает вопросы с ответами, фильтрацию, пагинацию, тёмную тему и PWA.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Возможности
 
-Currently, two official plugins are available:
+- 📚 **База вопросов** – загружается из JSON с кэшированием в localStorage.
+- 🔍 **Поиск** – фильтрация по тексту вопроса, ответу или теме.
+- 📄 **Пагинация** – навигация по страницам с плавной прокруткой.
+- 🌓 **Тёмная/светлая тема** – переключатель с сохранением выбора.
+- 📱 **PWA** – установка на мобильные устройства, офлайн-работа.
+- ⚡ **Производительность** – мемоизация, ленивая загрузка, оптимизированные стили.
+- 🛠 **Обработка ошибок** – уведомления с возможностью повтора.
+- 📝 **Документированный код** – JSDoc/TSDoc комментарии.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🏗 Архитектура
 
-## React Compiler
+- **React 19** с TypeScript.
+- **Контексты** – `QuizContext` (состояние вопросов), `ThemeContext` (тема).
+- **Кастомные хуки** – `useQuestions`, `useQuiz`.
+- **Стили** – CSS-переменные, Styled Components, адаптивный дизайн.
+- **Сборка** – Vite, плагин PWA, Prettier, Husky для pre-commit форматирования.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📁 Структура проекта
 
-## Expanding the ESLint configuration
+```
+src/
+├── components/
+│   ├── layout/          – компоненты макета (Header)
+│   ├── features/        – основные компоненты (QuestionCard, SearchBar, Pagination)
+│   └── common/          – общие компоненты (ScrollToTopButton)
+├── contexts/            – React-контексты (QuizContext, ThemeContext)
+├── hooks/               – кастомные хуки (useQuestions)
+├── styles/              – глобальные стили и анимации
+├── types.ts             – TypeScript-типы
+├── App.tsx              – корневой компонент
+└── main.tsx             – точка входа
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚦 Запуск
+
+### Установка зависимостей
+
+```bash
+cd quiz-app
+npm install
+```
+
+### Разработка
+
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу [http://localhost:5173](http://localhost:5173).
+
+### Сборка
+
+```bash
+npm run build
+```
+
+Собранные файлы появятся в папке `dist/`.
+
+### Проверка кода
+
+```bash
+npm run lint          # ESLint
+npm run format:check  # Prettier проверка
+npm run format        # Prettier форматирование
+```
+
+## 🧪 Тестирование
+
+Тесты пока не реализованы (планируется добавление Jest + React Testing Library).
+
+## 🔧 Реализованные улучшения
+
+1. **Архитектура** – централизация состояния через контексты, выделение хуков.
+2. **Производительность** – мемоизация компонентов, кэширование вопросов.
+3. **UX и доступность** – семантическая разметка, ARIA-атрибуты, адаптивный дизайн.
+4. **Тёмная тема** – переключатель, CSS-переменные, адаптация всех компонентов.
+5. **Обработка ошибок** – уведомления с кнопкой повтора.
+6. **Форматирование кода** – Prettier + Husky pre-commit хук.
+7. **Документация** – JSDoc/TSDoc комментарии к основным интерфейсам и функциям.
+
+Подробный отчёт с рекомендациями находится в файле [`improvements.md`](./improvements.md).
+
+## 📄 Лицензия
+
+Проект создан для образовательных целей. Автор: Denis Frolov (<d.fr8938@gmail.com>).
